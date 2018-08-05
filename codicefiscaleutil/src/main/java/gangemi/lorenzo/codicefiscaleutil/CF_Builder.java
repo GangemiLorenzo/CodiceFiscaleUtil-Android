@@ -2,7 +2,7 @@ package gangemi.lorenzo.codicefiscaleutil;
 
 import android.util.Log;
 
-public class Builder {
+public class CF_Builder {
 
     private static final String TAG = "CF_BUILDER";
 
