@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     TextView CodiceFiscale;
     EditText Cognome, Nome, DataDiNascita;
     AutoCompleteTextView ComuneDiNascita;
-    RadioButton Uomo,Donna;
+    RadioButton Uomo;
     Button BtnProcedi;
 
     @Override
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         Cognome = this.findViewById(R.id.editCognome);
         Nome = this.findViewById(R.id.editNome);
         DataDiNascita = this.findViewById(R.id.editData);
-        ComuneDiNascita = (AutoCompleteTextView) this.findViewById(R.id.editAutoCitta);
+        ComuneDiNascita = this.findViewById(R.id.editAutoCitta);
         Uomo= this.findViewById(R.id.radioUomo);
         BtnProcedi= findViewById(R.id.btnGenera);
 
