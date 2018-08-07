@@ -9,14 +9,23 @@ public class PersonalData {
     private String birthplace;
     private boolean gender; //true-->Male
 
+    public  PersonalData() {
+
+    }
+
     public  PersonalData(String name, String surname, String dd, String mm, String yy, boolean gender, String birthplace) {
-        this.setName(name);
-        this.setSurname(surname);
-        this.setDd(dd);
-        this.setMm(mm);
-        this.setYy(yy);
-        this.setBirthplace(birthplace);
-        this.setGender(gender);
+        try {
+            this.setName(name);
+            this.setSurname(surname);
+            this.setDd(dd);
+            this.setMm(mm);
+            this.setYy(yy);
+            this.setBirthplace(birthplace);
+            this.setGender(gender);
+        }catch (Error e)
+        {
+            throw new RuntimeException("Something goes wrong in new PersonalData",e);
+        }
     }
 
     public String getName() {
@@ -24,7 +33,7 @@ public class PersonalData {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     public String getSurname() {
@@ -32,7 +41,7 @@ public class PersonalData {
     }
 
     public void setSurname(String surname) {
-        this.surname = surname;
+        this.surname = surname.toUpperCase();
     }
 
     public String getDd() {
@@ -73,5 +82,16 @@ public class PersonalData {
 
     public void setGender(boolean gender) {
         this.gender = gender;
+    }
+
+
+    public Boolean checkPersonalData(){
+        Boolean check = true;
+        if(getName().isEmpty()) check = false;
+        if(getSurname().isEmpty()) check = false;
+        if(getDd().isEmpty() || getDd().length()>2) check = false;
+        if(getMm().isEmpty() || getMm().length()>2) check = false;
+        if(getYy().isEmpty() || getYy().length()>4) check = false;
+        return check;
     }
 }

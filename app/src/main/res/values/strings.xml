@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Demo Codice Fiscale</string>
+    <string name="app_name">Codice Fiscale</string>
+    <string name="dialog_description">Il codice fiscale è stato generato con successo:</string>
+    <string name="comune_di_nascita">Comune di nascita</string>
+    <string name="data_di_nascita">Data di nascita dd/mm/yyyy</string>
+    <string name="donna">Donna</string>
+    <string name="uomo">Uomo</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="calcola">Calcola Codice Fiscale</string>
+    <string name="codicefiscale">CodiceFiscale</string>
+    <string name="github">Github</string>
 </resources>

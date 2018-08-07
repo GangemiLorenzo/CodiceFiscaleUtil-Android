@@ -32,13 +32,14 @@ public class CF_Builder {
 
     //Return the first three consonants
     private static String getSurnameCode(String surname) {
-        String SurnameCode = remove_vowels(surname.toUpperCase());
+        surname = surname.concat("XXX");
+        String SurnameCode = remove_vowels(surname);
         return SurnameCode.substring(0,3);
     }
 
     //Return the first, the third and the fourth consonants
     private static String getNameCode(String name) {
-        String NameCode = remove_vowels(name.toUpperCase());
+        String NameCode = remove_vowels(name);
         if (NameCode.length() >= 4)
             NameCode = NameCode.substring(0,1) + NameCode.substring(2,3) + NameCode.substring(3,4);
         else {
