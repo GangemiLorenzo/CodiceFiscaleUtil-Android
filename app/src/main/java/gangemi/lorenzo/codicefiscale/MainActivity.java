@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,12 +33,14 @@ public class MainActivity extends AppCompatActivity {
     Button BtnProcedi;
     CardView CardCodice;
 
+    List<String> citylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         CF_Builder.init(this);
+        CF_Builder.setDebug(true);
         initView();
     }
 
@@ -70,30 +73,43 @@ public class MainActivity extends AppCompatActivity {
         CardCodice = findViewById(R.id.CardCodice);
         CardCodice.setVisibility(View.GONE);
 
-        CodiceFiscale = (TextView) findViewById(R.id.CodiceFiscale);
+        CodiceFiscale = findViewById(R.id.CodiceFiscale);
 
         loadCityList();
 
         BtnProcedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String date[] = DataDiNascita.getText().toString().split("/");
-                PersonalData p = new PersonalData(Nome.getText().toString(),
-                        Cognome.getText().toString(),
-                        date[0],
-                        date[1],
-                        date[2],
-                        Uomo.isChecked(),
-                        ComuneDiNascita.getText().toString()
-                );
-                CardCodice.setVisibility(View.VISIBLE);
-                CodiceFiscale.setText(CF_Builder.build(p));
+                if(citylist.contains(ComuneDiNascita.getText().toString()) &&
+                        Nome.getText() != null &&
+                        Cognome.getText()!=null &&
+                        DataDiNascita.getText()!= null) {
+                    String cod = null;
+                    try {
+                        String date[] = DataDiNascita.getText().toString().split("/");
+                        PersonalData p = new PersonalData(
+                                Nome.getText().toString(),
+                                Cognome.getText().toString(),
+                                date[0],
+                                date[1],
+                                date[2],
+                                Uomo.isChecked(),
+                                ComuneDiNascita.getText().toString()
+                        );
+                        cod = CF_Builder.build(p);
+                    }catch (Exception e)
+                    {
+                       Log.e("MAIN_ACTIVITY",e.getMessage());
+                    }
+                    CodiceFiscale.setText(cod != null ? cod : "errore");
+                    CardCodice.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
 
     private void loadCityList() {
-        List<String> citylist = CF_Builder.getCityList();
+        citylist = CF_Builder.getCityList();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, citylist);
         ComuneDiNascita.setThreshold(1);

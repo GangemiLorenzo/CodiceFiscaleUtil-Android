@@ -4,6 +4,8 @@
 
 Android library to build the Italian Codice Fiscale, once given the correct info.
 
+![In app screenshot](docs/CodFiscale.png)
+
 ## Installation
 
 Add it in your root build.gradle at the end of repositories:

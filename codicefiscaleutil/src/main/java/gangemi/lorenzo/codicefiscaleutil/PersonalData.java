@@ -9,10 +9,6 @@ public class PersonalData {
     private String birthplace;
     private boolean gender; //true-->Male
 
-    public  PersonalData() {
-
-    }
-
     public  PersonalData(String name, String surname, String dd, String mm, String yy, boolean gender, String birthplace) {
         try {
             this.setName(name);
@@ -84,14 +80,4 @@ public class PersonalData {
         this.gender = gender;
     }
 
-
-    public Boolean checkPersonalData(){
-        Boolean check = true;
-        if(getName().isEmpty()) check = false;
-        if(getSurname().isEmpty()) check = false;
-        if(getDd().isEmpty() || getDd().length()>2) check = false;
-        if(getMm().isEmpty() || getMm().length()>2) check = false;
-        if(getYy().isEmpty() || getYy().length()>4) check = false;
-        return check;
-    }
 }
